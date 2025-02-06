@@ -43,7 +43,7 @@ class _ImageProcessingState extends State<ImageProcessing> {
           final red = buffer[i];
           final green = buffer[i + 1];
           final blue = buffer[i + 2];
-          if (red > 130 && green < 100 && blue < 100) {
+          if (red > 150 && green < 100 && blue < 100) {
             int index = i ~/ 4;
             int x = index % image.width;
             int y = index ~/ image.width;
