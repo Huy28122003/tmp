@@ -101,10 +101,16 @@ class _ImageProcessingState extends State<ImageProcessing> {
       body: Center(
         child: _image == null
             ? CircularProgressIndicator()
-            : CustomPaint(
-                size: Size(_image!.width.toDouble(), _image!.height.toDouble()),
-                painter: RedPointsPainter(_image!, redPoints),
-              ),
+            : FittedBox(
+          fit: BoxFit.contain,
+          child: SizedBox(
+            width: _image!.width.toDouble(),
+            height: _image!.height.toDouble(),
+            child: CustomPaint(
+              painter: RedPointsPainter(_image!, redPoints),
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -129,7 +135,7 @@ class RedPointsPainter extends CustomPainter {
       ..strokeWidth = 2;
 
     for (var point in redPoints) {
-      canvas.drawCircle(point, 5.0, redPaint);
+      canvas.drawCircle(point, 10.0, redPaint);
     }
   }
 
