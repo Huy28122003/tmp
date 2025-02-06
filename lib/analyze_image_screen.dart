@@ -15,6 +15,7 @@ class ImageProcessing extends StatefulWidget {
 class _ImageProcessingState extends State<ImageProcessing> {
   ui.Image? _image;
   List<Offset> redPoints = [];
+  bool _isProcessing = true;
 
   @override
   void initState() {
@@ -53,6 +54,7 @@ class _ImageProcessingState extends State<ImageProcessing> {
     }).then((_) {
       setState(() {
         redPoints = _groupNearbyPoints(points, 10);
+        _isProcessing = false;
       });
     });
   }
@@ -99,7 +101,7 @@ class _ImageProcessingState extends State<ImageProcessing> {
     return Scaffold(
       appBar: AppBar(title: Text("Phát hiện điểm đỏ")),
       body: Center(
-        child: _image == null
+        child: _isProcessing
             ? CircularProgressIndicator()
             : FittedBox(
           fit: BoxFit.contain,
