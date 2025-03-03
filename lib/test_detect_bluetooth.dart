@@ -98,6 +98,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
+import 'package:get_mac_address/get_mac_address.dart';
 import 'package:tmp/ble_controller.dart';
 
 class TestDetectBluetooth extends StatefulWidget {
@@ -115,6 +116,7 @@ class _TestDetectBluetoothState extends State<TestDetectBluetooth> {
   void initState() {
     super.initState();
     _startScan();
+    getMacAddress();
   }
 
   void _startScan() async {
@@ -137,6 +139,11 @@ class _TestDetectBluetoothState extends State<TestDetectBluetooth> {
     setState(() {
       isScanning = false;
     });
+  }
+
+  Future<void> getMacAddress() async {
+    final _getMacAddressPlugin = GetMacAddress();
+    print("dsaasda ${await _getMacAddressPlugin.getMacAddress()}");
   }
 
   @override

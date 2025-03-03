@@ -26,30 +26,37 @@
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We need your permission to access WiFi information.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>We need access Photos</string>
+	<key>NSCameraUsageDescription</key>
+	<string>need</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>need</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>We need your permission to access WiFi information.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>nrrd</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
+	<key>NSMotionUsageDescription</key>
+    <string>This app requires access to the barometer to provide altitude information.</string>
 	<key>NSLocalNetworkUsageDescription</key>
-	<string>We need to access your local network to scan connected devices.</string>
+	<string>Ứng dụng cần quyền để thực hiện ping và phát hiện thiết bị trên mạng cục bộ.</string>
 	<key>NSBluetoothAlwaysUsageDescription</key>
 	<string>Need BLE permission</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>Need BLE permission</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Need Location permission</string>
-	 <key>NSAppTransportSecurity</key>
-     <dict>
-         <key>NSAllowsArbitraryLoads</key>
-         <true/>
-     </dict>
-     <key>NSLocalNetworkUsageDescription</key>
-     <string>Ứng dụng cần quyền để thực hiện ping và phát hiện thiết bị trên mạng cục bộ.</string>
-     <key>NSBonjourServices</key>
-     <array>
-         <string>_services._dns-sd._udp.</string>
-     </array>
-
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_services._dns-sd._udp.</string>
+	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UISupportedInterfaceOrientations</key>
