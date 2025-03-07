@@ -17,17 +17,18 @@ class _TestSketchImageState extends State<TestSketchImage> {
   String? outputPath;
 
   Future<void> pickImageAndDetectEdge() async {
-    final picker = ImagePicker();
-    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
-
-    if (pickedFile == null) return;
-
-    setState(() {
-      isAnalyzing = true;
-      inputPath = pickedFile.path;
-    });
+    // final picker = ImagePicker();
+    // final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    //
+    // if (pickedFile == null) return;
+    //
+    // setState(() {
+    //   isAnalyzing = true;
+    //   inputPath = pickedFile.path;
+    // });
 
     final tempDir = await getTemporaryDirectory();
+    inputPath = "${tempDir.path}/person.jpeg";
     final fileName = 'converted_${DateTime.now().microsecondsSinceEpoch}.png';
     final String tempPath = "${tempDir.path}/$fileName";
 
@@ -35,7 +36,10 @@ class _TestSketchImageState extends State<TestSketchImage> {
     print(tempPath);
 
     try {
-      await native_opencv.cannyDetector(inputPath!, tempPath, threshold: 40);
+      await native_opencv.rough(
+        inputPath!,
+        tempPath,
+      );
       setState(() {
         outputPath = tempPath;
         isAnalyzing = false;
@@ -70,6 +74,4 @@ class _TestSketchImageState extends State<TestSketchImage> {
       ),
     );
   }
-
-
 }

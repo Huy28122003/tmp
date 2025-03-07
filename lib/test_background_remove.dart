@@ -4,8 +4,10 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image/image.dart' as imageLib;
+
 // import 'package:image_background_remover/image_background_remover.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'package:local_rembg/local_rembg.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:tmp/utils/pick_image.dart';
 
@@ -26,7 +28,6 @@ class _TestBackgroundRemoveState extends State<TestBackgroundRemove> {
 
   @override
   void initState() {
-    // BackgroundRemover.instance.initializeOrt();
     super.initState();
   }
 
@@ -78,11 +79,31 @@ class _TestBackgroundRemoveState extends State<TestBackgroundRemove> {
                           ),
                           TextButton(
                             onPressed: () async {
-                              // outImg.value =
-                              // await FlutterBackgroundRemover
+                              // outImg.value = await FlutterBackgroundRemover
                               //     .removeBackground(
-                              //     imageBytes: image
-                              //         .readAsBytesSync());
+                              //         imageBytes: image.readAsBytesSync());
+
+                              // outImg.value = await BackgroundRemover.instance
+                              //     .removeBg(image.readAsBytesSync());
+
+                              Uint8List imageBytes = await image.readAsBytes();
+
+                              LocalRembgResultModel localRembgResultModel =
+                                  await LocalRembg.removeBackground(
+                                imageUint8List: imageBytes,
+                                cropTheImage: true,
+                              );
+                              if (localRembgResultModel.status == 1) {
+                                ui.decodeImageFromList(
+                                    Uint8List.fromList(
+                                        localRembgResultModel.imageBytes!),
+                                    (result) {
+                                  outImg.value = result;
+                                });
+                              } else {
+                                print(
+                                    "Lỗi khi xóa nền: ${localRembgResultModel.errorMessage}");
+                              }
                             },
                             child: const Text('Remove Background'),
                           ),
@@ -147,9 +168,7 @@ class _TestBackgroundRemoveState extends State<TestBackgroundRemove> {
                                                 if (!isAnalyzing)
                                                   Image.memory(outputBytes),
                                                 ElevatedButton(
-                                                  onPressed: () async {
-
-                                                  },
+                                                  onPressed: () async {},
                                                   child: Text(
                                                       "Convert to Outline"),
                                                 ),

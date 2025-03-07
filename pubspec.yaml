@@ -44,7 +44,6 @@ dependencies:
   flutter_blue_plus: ^1.34.5
   network_info_plus: ^6.1.3
   camera: ^0.10.5+9
-  flutter_scan_bluetooth: ^2.1.4
   image: ^4.5.3
   image_picker: ^1.1.2
   tflite_flutter: ^0.11.0
@@ -59,6 +58,14 @@ dependencies:
     path: ../native_opencv/
   flutterbackgroundremover: ^0.0.1
   edge_auto_detection: ^1.0.3
+  local_rembg: ^1.1.3
+  pro_image_editor: ^8.3.5
+  ffmpeg_kit_flutter_min: ^6.0.3
+  video_editor: ^3.0.0
+  flutter_tts: ^4.2.2
+  speech_to_text: ^7.0.0
+  amlv: ^1.0.2
+#  flutter_ffmpeg: ^0.4.2
 #  image_background_remover: ^0.0.6
 
 
